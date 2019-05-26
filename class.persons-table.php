@@ -43,18 +43,6 @@ class Persons_Table extends WP_List_Table {
 	}
 
 
-	public function extra_tablenav($which)
-	{
-		?>
-		<div class="alignleft actions">
-			<input type="text" name="hello"/>
-			<?php submit_button(__('Apply', 'iw-stats'), 'action', 'dodate', false); ?>
-			<?php submit_button(__('Export as CSV', 'iw-stats'), 'action', 'doexport', false); ?>
-		</div>
-		<?php
-	}
-
-
 	function prepare_items() {
 		$paged                 = $_REQUEST['paged'] ?? 1;
 		$per_page              = 4;
