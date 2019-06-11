@@ -17,6 +17,7 @@ class Persons_Table extends WP_List_Table {
 		return [
 			'cb'    => '<input type="checkbox">',
 			'name'  => __( 'Name', 'tabledata' ),
+			'sex' =>__('Gender','tabledata'),
 			'email' => __( 'E-mail', 'tabledata' ),
 			'age'   => __( 'Age', 'tabledata' ),
 		];
@@ -40,6 +41,23 @@ class Persons_Table extends WP_List_Table {
 
 	function column_age( $item ) {
 		return "<em>{$item['age']}</em>";
+	}
+
+	function extra_tablenav( $which ) {
+		if('top'==$which):
+		?>
+		<div class="actions alignleft">
+			<select name="filter_s" id="filter_s">
+				<option value="all">All</option>
+				<option value="M">Males</option>
+				<option value="F">Females</option>
+			</select>
+			<?php
+			submit_button(__('Filter','tabledata'),'button','submit',false);
+			?>
+		</div>
+<?php
+	endif;
 	}
 
 
